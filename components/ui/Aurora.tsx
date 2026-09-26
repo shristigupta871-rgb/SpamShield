@@ -158,7 +158,9 @@ export default function Aurora(props: AuroraProps) {
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    gl.canvas.style.backgroundColor = 'transparent';
+    if (gl.canvas && 'style' in gl.canvas) {
+      (gl.canvas as HTMLCanvasElement).style.backgroundColor = 'transparent';
+    }
 
     let program: Program | undefined;
 
@@ -197,7 +199,7 @@ export default function Aurora(props: AuroraProps) {
     });
 
     const mesh = new Mesh(gl, { geometry, program });
-    ctn.appendChild(gl.canvas);
+    ctn.appendChild(gl.canvas as HTMLCanvasElement);
 
     let animateId = 0;
     const update = (t: number) => {
@@ -223,8 +225,8 @@ export default function Aurora(props: AuroraProps) {
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
-      if (ctn && gl && gl.canvas.parentNode === ctn) {
-        ctn.removeChild(gl.canvas);
+      if (ctn && gl && (gl.canvas as HTMLCanvasElement).parentNode === ctn) {
+        ctn.removeChild(gl.canvas as HTMLCanvasElement);
       }
       if (gl) {
         gl.getExtension('WEBGL_lose_context')?.loseContext();
