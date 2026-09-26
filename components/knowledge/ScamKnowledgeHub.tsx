@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import CardSwap, { Card } from '@/components/ui/CardSwap';
 
 interface QuizQuestion {
   id: number;
@@ -43,6 +44,44 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Red Flags: Postal services do not demand fee payments over SMS links with short timeframes. Always verify tracking numbers directly on official apps."
+  }
+];
+
+const SCAM_CARDS = [
+  {
+    icon: '🏦',
+    title: 'Banking & KYC Scams',
+    subtitle: 'Targeting account credentials & access',
+    description: 'Scammers send panic-inducing SMS messages claiming your bank account or debit card will be blocked immediately unless you complete a KYC update.',
+    goldenRule: 'Banks never ask you to update KYC via SMS links. Always use your official banking app.'
+  },
+  {
+    icon: '💳',
+    title: 'UPI & Payment Collect Scams',
+    subtitle: 'Targeting mobile wallets & PINs',
+    description: 'Scammers send fake cashback offers or collect request links, convincing victims that entering their UPI PIN will deposit money into their bank account.',
+    goldenRule: 'Entering your UPI PIN is ONLY for paying money, NEVER for receiving money.'
+  },
+  {
+    icon: '📦',
+    title: 'Courier & Delivery Scams',
+    subtitle: 'Targeting shipping fees & credit cards',
+    description: 'Fake SMS notifications claiming a package could not be delivered due to address errors or unpaid fees, linking to credit card harvesting sites.',
+    goldenRule: 'Verify parcel tracking numbers directly on official USPS, FedEx, or DHL websites.'
+  },
+  {
+    icon: '💼',
+    title: 'Fake Job & Task Scams',
+    subtitle: 'Targeting job seekers with high-pay offers',
+    description: 'Unsolicited WhatsApp/Telegram offers promising $500/day for rating YouTube videos, requiring upfront "equipment or training fees".',
+    goldenRule: 'Legitimate employers never ask candidates to pay money upfront for work equipment or training.'
+  },
+  {
+    icon: '🎁',
+    title: 'Prize & Sweepstakes Fraud',
+    subtitle: 'Targeting lottery claims & processing fees',
+    description: 'Messages claiming you won a new car or $50,000 cash prize, requiring you to click a link or pay processing fees to claim rewards.',
+    goldenRule: 'Never pay money or click links to claim a prize from a lottery you never entered.'
   }
 ];
 
@@ -129,70 +168,50 @@ export default function ScamKnowledgeHub() {
         </div>
       </div>
 
-      {/* Scam Encyclopedia Cards */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-3xl">🏦</span>
-            <div>
-              <h3 className="text-lg font-bold text-white">Banking & KYC Scams</h3>
-              <p className="text-xs text-slate-400">Targeting account access & credentials</p>
-            </div>
+      {/* 3D Stacked Card Swap Section */}
+      <div className="rounded-3xl border border-slate-800 bg-slate-950/90 p-8 shadow-2xl overflow-hidden">
+        <div className="mb-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Scam Encyclopedia Stack</span>
+            <h3 className="text-2xl font-bold text-white mt-1">Common Scam Categories & Golden Rules</h3>
           </div>
-          <p className="text-sm text-slate-300 leading-relaxed mb-3">
-            Scammers send panic-inducing SMS messages claiming your bank account or debit card will be blocked immediately unless you complete a KYC update.
-          </p>
-          <div className="rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs text-slate-400">
-            <span className="font-semibold text-emerald-400">Golden Rule:</span> Banks never ask you to update KYC via SMS links. Always use your official banking app.
-          </div>
+          <span className="text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
+            🔄 Auto-Swapping 3D Stack (Hover to Pause)
+          </span>
         </div>
 
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-3xl">💳</span>
-            <div>
-              <h3 className="text-lg font-bold text-white">UPI & Payment Collect Scams</h3>
-              <p className="text-xs text-slate-400">Targeting mobile wallets & banking PINs</p>
-            </div>
-          </div>
-          <p className="text-sm text-slate-300 leading-relaxed mb-3">
-            Scammers send "Collect Request" notifications or fake cashback offers, convincing victims that entering their UPI PIN will deposit money into their account.
-          </p>
-          <div className="rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs text-slate-400">
-            <span className="font-semibold text-emerald-400">Golden Rule:</span> Entering your UPI PIN is ONLY for paying money, NEVER for receiving money.
-          </div>
-        </div>
+        <div className="relative h-[420px] w-full flex items-center justify-center py-6">
+          <CardSwap
+            width={480}
+            height={340}
+            cardDistance={40}
+            verticalDistance={45}
+            delay={3800}
+            pauseOnHover={true}
+            skewAmount={3}
+          >
+            {SCAM_CARDS.map((card, idx) => (
+              <Card key={idx} className="p-6 flex flex-col justify-between border-slate-800 bg-slate-900/95 text-left">
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-3xl">{card.icon}</span>
+                    <div>
+                      <h4 className="text-lg font-extrabold text-white">{card.title}</h4>
+                      <p className="text-xs text-slate-400 font-medium">{card.subtitle}</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                    {card.description}
+                  </p>
+                </div>
 
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-3xl">📦</span>
-            <div>
-              <h3 className="text-lg font-bold text-white">Courier & Delivery Scams</h3>
-              <p className="text-xs text-slate-400">Targeting delivery notifications & shipping fees</p>
-            </div>
-          </div>
-          <p className="text-sm text-slate-300 leading-relaxed mb-3">
-            Fake SMS notifications claiming a package could not be delivered due to address errors or unpaid customs fees, linking to credit card harvesting forms.
-          </p>
-          <div className="rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs text-slate-400">
-            <span className="font-semibold text-emerald-400">Golden Rule:</span> Verify parcel tracking numbers directly on official USPS, FedEx, or DHL websites.
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-3xl">💼</span>
-            <div>
-              <h3 className="text-lg font-bold text-white">Fake Job & Task Scams</h3>
-              <p className="text-xs text-slate-400">Targeting job seekers with high-pay promises</p>
-            </div>
-          </div>
-          <p className="text-sm text-slate-300 leading-relaxed mb-3">
-            Unsolicited WhatsApp/Telegram offers promising $500/day for 1 hour of work rating YouTube videos or liking posts, requiring upfront "registration fees".
-          </p>
-          <div className="rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs text-slate-400">
-            <span className="font-semibold text-emerald-400">Golden Rule:</span> Legitimate employers never ask candidates to pay money upfront for work equipment or training.
-          </div>
+                <div className="rounded-xl border border-emerald-950 bg-emerald-950/40 p-3 text-xs text-slate-300">
+                  <span className="font-bold text-emerald-400">Golden Rule: </span>
+                  {card.goldenRule}
+                </div>
+              </Card>
+            ))}
+          </CardSwap>
         </div>
       </div>
     </div>
