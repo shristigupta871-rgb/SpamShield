@@ -95,24 +95,24 @@ export default function ScamKnowledgeHub() {
   };
 
   return (
-    <div className="space-y-12 py-8">
+    <div className="space-y-12 py-8 transition-colors duration-200">
       {/* Knowledge Hub Header */}
       <div className="text-center font-sans">
-        <span className="rounded-full bg-emerald-950/80 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 border border-emerald-800/50">
+        <span className="rounded-full bg-emerald-100 dark:bg-emerald-950/80 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-emerald-800 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800/50">
           Educational Security Guide
         </span>
-        <h2 className="mt-3 text-3xl font-display font-extrabold text-white sm:text-4xl">Scam Knowledge Hub</h2>
-        <p className="mt-2 text-slate-400 font-sans text-base max-w-2xl mx-auto">
+        <h2 className="mt-3 text-3xl font-display font-extrabold text-slate-900 dark:text-white sm:text-4xl">Scam Knowledge Hub</h2>
+        <p className="mt-2 text-slate-600 dark:text-slate-400 font-sans text-base max-w-2xl mx-auto">
           Learn how scammers operate, spot common warning signs, and understand how to protect your credentials and finances.
         </p>
       </div>
 
       {/* Interactive Quiz Section */}
-      <div className="rounded-3xl border border-emerald-900/60 bg-slate-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+      <div className="rounded-3xl border border-emerald-200 dark:border-emerald-900/60 bg-white dark:bg-slate-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-emerald-400">Interactive Quiz</span>
-            <h3 className="text-2xl font-display font-semibold text-white mt-1">Can You Spot the Red Flags?</h3>
+            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Interactive Quiz</span>
+            <h3 className="text-2xl font-display font-semibold text-slate-900 dark:text-white mt-1">Can You Spot the Red Flags?</h3>
           </div>
           <span className="text-2xl">🎯</span>
         </div>
@@ -124,21 +124,21 @@ export default function ScamKnowledgeHub() {
             const isCorrect = selected === q.correctIndex;
 
             return (
-              <div key={q.id} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
-                <p className="text-xs uppercase font-sans font-semibold tracking-wider text-slate-400 mb-2">Scenario #{q.id}</p>
-                <div className="rounded-xl border border-slate-800 bg-slate-900/90 p-4 font-mono text-sm break-all text-slate-200 mb-4">
+              <div key={q.id} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/70 p-5">
+                <p className="text-xs uppercase font-sans font-semibold tracking-wider text-slate-500 dark:text-slate-400 mb-2">Scenario #{q.id}</p>
+                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 p-4 font-mono text-sm break-all text-slate-800 dark:text-slate-200 mb-4 shadow-sm">
                   "{q.message}"
                 </div>
 
-                <p className="text-sm font-sans font-semibold text-slate-300 mb-3">What looks suspicious about this message?</p>
+                <p className="text-sm font-sans font-semibold text-slate-800 dark:text-slate-300 mb-3">What looks suspicious about this message?</p>
                 <div className="grid gap-2 sm:grid-cols-3">
                   {q.options.map((option, idx) => {
-                    let btnStyle = "border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700";
+                    let btnStyle = "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700";
                     if (isAnswered) {
                       if (idx === q.correctIndex) {
-                        btnStyle = "border-emerald-500 bg-emerald-950/80 text-emerald-300 font-bold";
+                        btnStyle = "border-emerald-500 bg-emerald-100 dark:bg-emerald-950/80 text-emerald-900 dark:text-emerald-300 font-bold";
                       } else if (idx === selected && !isCorrect) {
-                        btnStyle = "border-red-500 bg-red-950/80 text-red-300 font-bold";
+                        btnStyle = "border-red-500 bg-red-100 dark:bg-red-950/80 text-red-900 dark:text-red-300 font-bold";
                       }
                     }
 
@@ -156,7 +156,9 @@ export default function ScamKnowledgeHub() {
 
                 {isAnswered && (
                   <div className={`mt-4 rounded-xl border p-4 font-sans text-xs leading-relaxed ${
-                    isCorrect ? 'border-emerald-800 bg-emerald-950/30 text-emerald-300' : 'border-red-800 bg-red-950/30 text-red-300'
+                    isCorrect
+                      ? 'border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-300'
+                      : 'border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-950/30 text-red-900 dark:text-red-300'
                   }`}>
                     <p className="font-bold mb-1">{isCorrect ? '✅ Correct Assessment!' : '❌ Incorrect'}</p>
                     <p>{q.explanation}</p>
@@ -169,13 +171,13 @@ export default function ScamKnowledgeHub() {
       </div>
 
       {/* 3D Stacked Card Swap Section */}
-      <div className="rounded-3xl border border-slate-800 bg-slate-950/90 p-8 shadow-2xl overflow-hidden">
+      <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/90 p-8 shadow-2xl overflow-hidden">
         <div className="mb-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-emerald-400">Scam Encyclopedia Stack</span>
-            <h3 className="text-2xl font-display font-semibold text-white mt-1">Common Scam Categories & Golden Rules</h3>
+            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Scam Encyclopedia Stack</span>
+            <h3 className="text-2xl font-display font-semibold text-slate-900 dark:text-white mt-1">Common Scam Categories & Golden Rules</h3>
           </div>
-          <span className="text-xs font-mono tabular-nums text-slate-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
+          <span className="text-xs font-mono tabular-nums text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800">
             🔄 Auto-Swapping 3D Stack (Hover to Pause)
           </span>
         </div>
@@ -191,22 +193,22 @@ export default function ScamKnowledgeHub() {
             skewAmount={3}
           >
             {SCAM_CARDS.map((card, idx) => (
-              <Card key={idx} className="p-6 flex flex-col justify-between border-slate-800 bg-slate-900/95 text-left">
+              <Card key={idx} className="p-6 flex flex-col justify-between border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/95 text-left text-slate-900 dark:text-white shadow-md">
                 <div>
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-3xl">{card.icon}</span>
                     <div>
-                      <h4 className="text-lg font-extrabold text-white">{card.title}</h4>
-                      <p className="text-xs text-slate-400 font-medium">{card.subtitle}</p>
+                      <h4 className="text-lg font-display font-extrabold text-slate-900 dark:text-white">{card.title}</h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">{card.subtitle}</p>
                     </div>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
                     {card.description}
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-emerald-950 bg-emerald-950/40 p-3 text-xs text-slate-300">
-                  <span className="font-bold text-emerald-400">Golden Rule: </span>
+                <div className="rounded-xl border border-emerald-300 dark:border-emerald-950 bg-emerald-50 dark:bg-emerald-950/40 p-3 text-xs text-slate-800 dark:text-slate-300">
+                  <span className="font-bold text-emerald-700 dark:text-emerald-400">Golden Rule: </span>
                   {card.goldenRule}
                 </div>
               </Card>
