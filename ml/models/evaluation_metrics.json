@@ -1,0 +1,13 @@
+{
+  "accuracy": 0.8888888888888888,
+  "precision": 0.8181818181818182,
+  "recall": 1.0,
+  "f1_score": 0.9,
+  "total_samples": 72,
+  "train_samples": 54,
+  "test_samples": 18,
+  "test_spam_count": 9,
+  "test_legit_count": 9,
+  "split_method": "Stratified 75/25 train/test split after deduplication",
+  "random_state": 42
+}

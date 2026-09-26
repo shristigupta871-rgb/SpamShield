@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "message": "URG3NT! Ur bank account is blockd due to unusual login. Tap http://b1t.ly/verify-acct to un-lock.",
+    "label": 1,
+    "scam_type": "obfuscated_financial_phishing"
+  },
+  {
+    "id": 2,
+    "message": "FINAL WARNlNG: Ur PayPai accnt will be closed in 24 hours. Login here: http://paypal-sec.net",
+    "label": 1,
+    "scam_type": "homoglyph_paypal_phishing"
+  },
+  {
+    "id": 3,
+    "message": "C.O.N.G.R.A.T.S! You won a $1,000 Wal-mart gift card! Claim now: http://claim-vouch3r.xyz",
+    "label": 1,
+    "scam_type": "punctuated_prize_scam"
+  },
+  {
+    "id": 4,
+    "message": "U-S-P-S delivery alert: Package #81729 could not be delivered due to wrong address. Update at http://usps-redeliv.xyz",
+    "label": 1,
+    "scam_type": "punctuated_courier_scam"
+  },
+  {
+    "id": 5,
+    "message": "Part time remote data entry task: Earn $400-$900 per day working 1 hr from home. Msg Telegram @EarnCash2026",
+    "label": 1,
+    "scam_type": "remote_job_scam"
+  },
+  {
+    "id": 6,
+    "message": "Blnance Warning: Un-authorized 0.50 BTC withdrawal request. Cancel now: http://binance-sec.org",
+    "label": 1,
+    "scam_type": "typosquat_crypto_phishing"
+  },
+  {
+    "id": 7,
+    "message": "IRS Notice: Your tax refund of $1,250 is waiting. Submit tax form at http://irs-tax-gov.site",
+    "label": 1,
+    "scam_type": "government_tax_scam"
+  },
+  {
+    "id": 8,
+    "message": "Hi mom I lost my phone and this is my new temp number. Plz send $250 via Zelle now it is urgent!",
+    "label": 1,
+    "scam_type": "social_engineering_relative_impersonation"
+  },
+  {
+    "id": 9,
+    "message": "Geek Squad auto-renewal: Your yearly subscription of $499.00 will renew today. Call 1-888-555-0199 to cancel",
+    "label": 1,
+    "scam_type": "tech_support_invoice_scam"
+  },
+  {
+    "id": 10,
+    "message": "You received ₹10,000 cashback via Google Pay! Open app & enter UPI PIN to deposit into your bank.",
+    "label": 1,
+    "scam_type": "upi_collect_pin_fraud"
+  },
+  {
+    "id": 11,
+    "message": "Urgent dental appointment reminder: Dr Smith tomorrow 2pm. Reply YES to confirm or CANCEL to reschedule.",
+    "label": 0,
+    "scam_type": "legitimate_service_reminder"
+  },
+  {
+    "id": 12,
+    "message": "Your Uber login code is 84920. Never share this code with anyone.",
+    "label": 0,
+    "scam_type": "legitimate_otp"
+  },
+  {
+    "id": 13,
+    "message": "Hey are we still grabbing dinner tonight around 7pm?",
+    "label": 0,
+    "scam_type": "legitimate_chat"
+  },
+  {
+    "id": 14,
+    "message": "Your flight UA902 to SF has been delayed by 15 mins. New departure time 10:45 AM.",
+    "label": 0,
+    "scam_type": "legitimate_travel_update"
+  },
+  {
+    "id": 15,
+    "message": "GitHub login security code: 481920. Valid for 5 minutes.",
+    "label": 0,
+    "scam_type": "legitimate_2fa"
+  },
+  {
+    "id": 16,
+    "message": "Urgent team meeting rescheduled to 3pm today in conference room B. Please bring project slides.",
+    "label": 0,
+    "scam_type": "legitimate_work_message"
+  },
+  {
+    "id": 17,
+    "message": "Your monthly electric utility bill of $64.20 is ready. View statement at energyportal.com",
+    "label": 0,
+    "scam_type": "legitimate_utility_bill"
+  },
+  {
+    "id": 18,
+    "message": "Spotify payment confirmation: $9.99 billed to card ending 1928.",
+    "label": 0,
+    "scam_type": "legitimate_receipt"
+  }
+]
