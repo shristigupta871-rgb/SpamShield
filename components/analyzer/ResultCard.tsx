@@ -1,5 +1,8 @@
+'use client';
+
 import type { AnalysisResult } from '@/lib/types';
 import RiskBadge from './RiskBadge';
+import CountUp from '@/components/ui/CountUp';
 
 export default function ResultCard({ result }: { result: AnalysisResult | null }) {
   if (!result) {
@@ -90,7 +93,9 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
         <div className="mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 p-5">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Risk Assessment Level</span>
-            <span className="text-sm font-extrabold text-white">{score} / 100</span>
+            <span className="text-sm font-extrabold text-white">
+              <CountUp from={0} to={score} duration={1.2} className="text-emerald-400 font-extrabold" /> / 100
+            </span>
           </div>
           <div className="font-mono text-xl sm:text-2xl tracking-widest text-emerald-400 font-extrabold mb-2">
             {riskBarString} <span className="text-sm font-sans font-bold ml-2 text-slate-200">{risk} RISK</span>
@@ -184,11 +189,15 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <p className="text-xs text-slate-400">ML Spam Probability</p>
-                <p className="mt-1 text-2xl font-bold text-emerald-300">{result.mlDetails.ml_probability}%</p>
+                <p className="mt-1 text-2xl font-bold text-emerald-300">
+                  <CountUp from={0} to={result.mlDetails.ml_probability} duration={1.2} />%
+                </p>
               </div>
               <div>
                 <p className="text-xs text-slate-400">Classifier Confidence</p>
-                <p className="mt-1 text-2xl font-bold text-emerald-300">{result.mlDetails.ml_confidence}%</p>
+                <p className="mt-1 text-2xl font-bold text-emerald-300">
+                  <CountUp from={0} to={result.mlDetails.ml_confidence} duration={1.2} />%
+                </p>
               </div>
             </div>
           </div>
