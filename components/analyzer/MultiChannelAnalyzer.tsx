@@ -211,7 +211,7 @@ export default function MultiChannelAnalyzer() {
         <div className="mb-6 flex flex-wrap justify-center gap-1.5 rounded-2xl border border-slate-800 bg-slate-950 p-1.5 text-xs font-semibold">
           <button
             onClick={() => { setActiveTab('message'); stopCamera(); setError(null); }}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 transition ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-sans font-medium transition ${
               activeTab === 'message' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -219,7 +219,7 @@ export default function MultiChannelAnalyzer() {
           </button>
           <button
             onClick={() => { setActiveTab('camera'); startCamera(); setError(null); }}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 transition ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-sans font-medium transition ${
               activeTab === 'camera' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -227,7 +227,7 @@ export default function MultiChannelAnalyzer() {
           </button>
           <button
             onClick={() => { setActiveTab('upload'); stopCamera(); setError(null); }}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 transition ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-sans font-medium transition ${
               activeTab === 'upload' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -235,7 +235,7 @@ export default function MultiChannelAnalyzer() {
           </button>
           <button
             onClick={() => { setActiveTab('url'); stopCamera(); setError(null); }}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 transition ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-sans font-medium transition ${
               activeTab === 'url' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -243,7 +243,7 @@ export default function MultiChannelAnalyzer() {
           </button>
           <button
             onClick={() => { setActiveTab('email'); stopCamera(); setError(null); }}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 transition ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-sans font-medium transition ${
               activeTab === 'email' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -251,7 +251,7 @@ export default function MultiChannelAnalyzer() {
           </button>
           <button
             onClick={() => { setActiveTab('history'); stopCamera(); setError(null); }}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 transition ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-sans font-medium transition ${
               activeTab === 'history' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -259,7 +259,7 @@ export default function MultiChannelAnalyzer() {
           </button>
           <button
             onClick={() => { setActiveTab('knowledge'); stopCamera(); setError(null); }}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 transition ${
+            className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 font-sans font-medium transition ${
               activeTab === 'knowledge' ? 'bg-emerald-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -283,7 +283,7 @@ export default function MultiChannelAnalyzer() {
                 >
                   <button
                     onClick={() => loadExample(ex.text)}
-                    className="rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500 hover:text-white"
+                    className="rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2 font-sans text-xs font-medium text-slate-300 transition hover:border-emerald-500 hover:text-white"
                   >
                     {ex.label}
                   </button>
@@ -305,7 +305,7 @@ export default function MultiChannelAnalyzer() {
             <button
               onClick={handleAnalyzeMessage}
               disabled={isLoading}
-              className="w-full rounded-xl bg-emerald-500 py-3.5 font-bold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
+              className="w-full rounded-xl bg-emerald-500 py-3.5 font-sans font-medium text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
             >
               {isLoading ? 'Analyzing Message Threat...' : 'Analyze Message'}
             </button>
@@ -321,14 +321,14 @@ export default function MultiChannelAnalyzer() {
                 <div className="flex justify-center gap-3">
                   <button
                     onClick={() => { setImagePreview(null); startCamera(); }}
-                    className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-900"
+                    className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-2 font-sans text-xs font-semibold text-slate-300 hover:bg-slate-900"
                   >
                     Retake Photo
                   </button>
                   <button
                     onClick={handleAnalyzeVisual}
                     disabled={isLoading}
-                    className="rounded-xl bg-emerald-500 px-6 py-2 text-xs font-bold text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
+                    className="rounded-xl bg-emerald-500 px-6 py-2 font-sans text-xs font-bold text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
                   >
                     {isLoading ? 'Scanning OCR Visuals...' : 'Analyze Photo'}
                   </button>
@@ -341,7 +341,7 @@ export default function MultiChannelAnalyzer() {
                 </div>
                 <button
                   onClick={capturePhoto}
-                  className="rounded-xl bg-emerald-500 px-6 py-3 font-bold text-slate-950 hover:bg-emerald-400"
+                  className="rounded-xl bg-emerald-500 px-6 py-3 font-sans font-medium text-slate-950 hover:bg-emerald-400"
                 >
                   📸 Take Snapshot & Analyze
                 </button>
@@ -359,14 +359,14 @@ export default function MultiChannelAnalyzer() {
                 <div className="flex justify-center gap-3">
                   <button
                     onClick={() => setImagePreview(null)}
-                    className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-900"
+                    className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-2 font-sans text-xs font-semibold text-slate-300 hover:bg-slate-900"
                   >
                     Remove Image
                   </button>
                   <button
                     onClick={handleAnalyzeVisual}
                     disabled={isLoading}
-                    className="rounded-xl bg-emerald-500 px-6 py-2 text-xs font-bold text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
+                    className="rounded-xl bg-emerald-500 px-6 py-2 font-sans text-xs font-bold text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
                   >
                     {isLoading ? 'Scanning OCR Visuals...' : 'Analyze Image'}
                   </button>
@@ -391,7 +391,7 @@ export default function MultiChannelAnalyzer() {
               value={urlInput}
               onChange={(e) => setUrlInput(e.target.value)}
               placeholder="e.g. http://paypa1-security-login.xyz/verify-account"
-              className="w-full rounded-xl border border-slate-700 bg-slate-950 p-4 text-sm font-mono text-slate-100 outline-none focus:border-emerald-500 placeholder:text-slate-600"
+              className="w-full rounded-xl border border-slate-700 bg-slate-950 p-4 font-mono text-sm break-all text-slate-100 outline-none focus:border-emerald-500 placeholder:text-slate-600"
             />
             <button
               onClick={handleAnalyzeUrl}

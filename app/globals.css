@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #0f172a;
+  --background: #0b1120;
   --foreground: #e2e8f0;
   --panel: #111827;
   --muted: #94a3b8;
-  --primary: #22c55e;
+  --primary: #10b981;
   --warning: #f59e0b;
   --danger: #ef4444;
+  --font-geist: var(--font-geist-sans);
 }
 
 html {
@@ -19,9 +20,9 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #020817 0%, #0f172a 35%, #111827 100%);
+  background-color: #0b1120;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: 'tnum' 1, 'cv11' 1;
 }
 
 a {
@@ -34,6 +35,8 @@ a {
 }
 
 button,
-textarea {
+textarea,
+input {
   font: inherit;
 }
+

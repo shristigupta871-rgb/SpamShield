@@ -104,15 +104,15 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
         {/* Risk Level Bar */}
         <div className="mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 p-5">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Risk Assessment Level</span>
+            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-slate-400">Risk Assessment Level</span>
             <span className="text-sm font-extrabold text-white">
-              <CountUp from={0} to={score} duration={1.2} className="text-emerald-400 font-extrabold" /> / 100
+              <CountUp from={0} to={score} duration={1.2} className="font-mono text-6xl font-bold tabular-nums text-emerald-400" /> <span className="font-mono text-xl font-bold text-slate-400">/ 100</span>
             </span>
           </div>
           <div className="font-mono text-xl sm:text-2xl tracking-widest text-emerald-400 font-extrabold mb-2">
-            {riskBarString} <span className="text-sm font-sans font-bold ml-2 text-slate-200">{risk} RISK</span>
+            {riskBarString} <span className="text-sm font-sans font-semibold uppercase tracking-wider ml-2 text-slate-200">{risk} RISK</span>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="font-sans text-xs text-slate-400">
             {risk === 'HIGH'
               ? 'Multiple critical threat vectors detected. Strong indicators of phishing or malicious intent.'
               : risk === 'MEDIUM'
@@ -125,10 +125,10 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
         {result.extractedText && (
           <div className="mb-6 rounded-2xl border border-slate-800 bg-slate-950 p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase text-emerald-400">OCR Extracted Image Text</span>
+              <span className="font-sans text-xs font-semibold uppercase tracking-wider text-emerald-400">OCR Extracted Image Text</span>
               <span className="text-xs text-slate-500 font-mono">{result.ocrActive ? 'Tesseract OCR Active' : 'Visual Feature Scan'}</span>
             </div>
-            <p className="font-mono text-xs text-slate-300 leading-relaxed max-h-32 overflow-y-auto italic">
+            <p className="font-mono text-xs text-slate-300 leading-relaxed max-h-32 overflow-y-auto italic break-all">
               "{result.extractedText}"
             </p>
           </div>
@@ -143,34 +143,34 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
 
         {/* Why Was This Flagged? Section */}
         <div className="mb-6">
-          <h4 className="text-base font-bold text-white mb-3">Why Was This Flagged?</h4>
+          <h4 className="font-sans text-base font-semibold text-white mb-3">Why Was This Flagged?</h4>
           <div className="grid gap-3 sm:grid-cols-2">
             {isUrgent && (
               <div className="rounded-xl border border-amber-900/50 bg-amber-950/20 p-3 text-xs">
-                <span className="font-bold text-amber-300">⚠ Urgency Language</span>
-                <p className="mt-1 text-slate-300">Pressures recipient to act immediately with deadline threats.</p>
+                <span className="font-sans font-semibold text-amber-300">⚠ Urgency Language</span>
+                <p className="mt-1 font-sans text-slate-300">Pressures recipient to act immediately with deadline threats.</p>
               </div>
             )}
             {isFinancial && (
               <div className="rounded-xl border border-red-900/50 bg-red-950/20 p-3 text-xs">
-                <span className="font-bold text-red-300">⚠ Financial Action Request</span>
-                <p className="mt-1 text-slate-300">Requests money transfers, UPI PINs, or bank account credentials.</p>
+                <span className="font-sans font-semibold text-red-300">⚠ Financial Action Request</span>
+                <p className="mt-1 font-sans text-slate-300">Requests money transfers, UPI PINs, or bank account credentials.</p>
               </div>
             )}
             {isLink && (
               <div className="rounded-xl border border-amber-900/50 bg-amber-950/20 p-3 text-xs">
-                <span className="font-bold text-amber-300">⚠ External Link Reference</span>
-                <p className="mt-1 text-slate-300">Contains unverified URL link pointing to external sites.</p>
+                <span className="font-sans font-semibold text-amber-300">⚠ External Link Reference</span>
+                <p className="mt-1 font-sans text-slate-300">Contains unverified URL link pointing to external sites.</p>
               </div>
             )}
             {isThreat && (
               <div className="rounded-xl border border-red-900/50 bg-red-950/20 p-3 text-xs">
-                <span className="font-bold text-red-300">⚠ Threat / Account Block Signal</span>
-                <p className="mt-1 text-slate-300">Claims an account, debit card, or service will be locked today.</p>
+                <span className="font-sans font-semibold text-red-300">⚠ Threat / Account Block Signal</span>
+                <p className="mt-1 font-sans text-slate-300">Claims an account, debit card, or service will be locked today.</p>
               </div>
             )}
             {!isUrgent && !isFinancial && !isLink && !isThreat && (
-              <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/20 p-3 text-xs text-emerald-300">
+              <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/20 p-3 text-xs text-emerald-300 font-sans font-medium">
                 ✓ No high-priority threat signals identified.
               </div>
             )}
@@ -180,12 +180,12 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
         {/* Evidence / Suspicious Phrases Section */}
         {evidence.length > 0 && (
           <div className="mb-6 rounded-2xl border border-slate-800 bg-slate-950/80 p-5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Evidence & Suspicious Phrases Found</h4>
+            <h4 className="font-sans text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Evidence & Suspicious Phrases Found</h4>
             <div className="space-y-2">
               {evidence.map((ev, idx) => (
                 <div key={idx} className="flex flex-wrap items-baseline justify-between gap-2 rounded-xl border border-slate-800 bg-slate-900/90 p-3 text-xs">
-                  <span className="font-mono font-bold text-emerald-400">{ev.phrase}</span>
-                  <span className="text-slate-400">→ {ev.label}: <span className="text-slate-300">{ev.rationale}</span></span>
+                  <span className="font-mono text-sm break-all font-bold text-emerald-400">{ev.phrase}</span>
+                  <span className="font-sans text-slate-400">→ {ev.label}: <span className="text-slate-300">{ev.rationale}</span></span>
                 </div>
               ))}
             </div>
@@ -196,7 +196,7 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
         {result.mlDetails && (
           <div className="mb-6 rounded-2xl border border-emerald-950 bg-emerald-950/20 p-5 backdrop-blur-sm">
             <div className="mb-3 flex items-center justify-between">
-              <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+              <span className="flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-wider text-emerald-400">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
@@ -207,14 +207,14 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <p className="text-xs text-slate-400">ML Spam Probability</p>
-                <p className="mt-1 text-2xl font-bold text-emerald-300">
+                <p className="font-sans text-xs text-slate-400">ML Spam Probability</p>
+                <p className="mt-1 font-mono font-medium text-emerald-400 tabular-nums text-2xl">
                   <CountUp from={0} to={result.mlDetails.ml_probability} duration={1.2} />%
                 </p>
               </div>
               <div>
-                <p className="text-xs text-slate-400">Classifier Confidence</p>
-                <p className="mt-1 text-2xl font-bold text-emerald-300">
+                <p className="font-sans text-xs text-slate-400">Classifier Confidence</p>
+                <p className="mt-1 font-mono font-medium text-emerald-400 tabular-nums text-2xl">
                   <CountUp from={0} to={result.mlDetails.ml_confidence} duration={1.2} />%
                 </p>
               </div>

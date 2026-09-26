@@ -97,12 +97,12 @@ export default function ScamKnowledgeHub() {
   return (
     <div className="space-y-12 py-8">
       {/* Knowledge Hub Header */}
-      <div className="text-center">
-        <span className="rounded-full bg-emerald-950/80 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 border border-emerald-800/50">
+      <div className="text-center font-sans">
+        <span className="rounded-full bg-emerald-950/80 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 border border-emerald-800/50">
           Educational Security Guide
         </span>
-        <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Scam Knowledge Hub</h2>
-        <p className="mt-2 text-slate-400 max-w-2xl mx-auto">
+        <h2 className="mt-3 text-3xl font-display font-extrabold text-white sm:text-4xl">Scam Knowledge Hub</h2>
+        <p className="mt-2 text-slate-400 font-sans text-base max-w-2xl mx-auto">
           Learn how scammers operate, spot common warning signs, and understand how to protect your credentials and finances.
         </p>
       </div>
@@ -111,13 +111,13 @@ export default function ScamKnowledgeHub() {
       <div className="rounded-3xl border border-emerald-900/60 bg-slate-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Interactive Quiz</span>
-            <h3 className="text-2xl font-bold text-white mt-1">Can You Spot the Red Flags?</h3>
+            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-emerald-400">Interactive Quiz</span>
+            <h3 className="text-2xl font-display font-semibold text-white mt-1">Can You Spot the Red Flags?</h3>
           </div>
           <span className="text-2xl">🎯</span>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 font-sans">
           {QUIZ_QUESTIONS.map((q) => {
             const selected = selectedQuizAnswers[q.id];
             const isAnswered = showResults[q.id];
@@ -125,12 +125,12 @@ export default function ScamKnowledgeHub() {
 
             return (
               <div key={q.id} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
-                <p className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-2">Scenario #{q.id}</p>
-                <div className="rounded-xl border border-slate-800 bg-slate-900/90 p-4 font-mono text-sm text-slate-200 mb-4">
+                <p className="text-xs uppercase font-sans font-semibold tracking-wider text-slate-400 mb-2">Scenario #{q.id}</p>
+                <div className="rounded-xl border border-slate-800 bg-slate-900/90 p-4 font-mono text-sm break-all text-slate-200 mb-4">
                   "{q.message}"
                 </div>
 
-                <p className="text-sm font-semibold text-slate-300 mb-3">What looks suspicious about this message?</p>
+                <p className="text-sm font-sans font-semibold text-slate-300 mb-3">What looks suspicious about this message?</p>
                 <div className="grid gap-2 sm:grid-cols-3">
                   {q.options.map((option, idx) => {
                     let btnStyle = "border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700";
@@ -146,7 +146,7 @@ export default function ScamKnowledgeHub() {
                       <button
                         key={idx}
                         onClick={() => handleSelectOption(q.id, idx)}
-                        className={`rounded-xl border p-3 text-left text-xs transition ${btnStyle}`}
+                        className={`rounded-xl border p-3 text-left font-sans text-xs font-medium transition ${btnStyle}`}
                       >
                         {option}
                       </button>
@@ -155,7 +155,7 @@ export default function ScamKnowledgeHub() {
                 </div>
 
                 {isAnswered && (
-                  <div className={`mt-4 rounded-xl border p-4 text-xs leading-relaxed ${
+                  <div className={`mt-4 rounded-xl border p-4 font-sans text-xs leading-relaxed ${
                     isCorrect ? 'border-emerald-800 bg-emerald-950/30 text-emerald-300' : 'border-red-800 bg-red-950/30 text-red-300'
                   }`}>
                     <p className="font-bold mb-1">{isCorrect ? '✅ Correct Assessment!' : '❌ Incorrect'}</p>
@@ -172,10 +172,10 @@ export default function ScamKnowledgeHub() {
       <div className="rounded-3xl border border-slate-800 bg-slate-950/90 p-8 shadow-2xl overflow-hidden">
         <div className="mb-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Scam Encyclopedia Stack</span>
-            <h3 className="text-2xl font-bold text-white mt-1">Common Scam Categories & Golden Rules</h3>
+            <span className="font-sans text-xs font-semibold uppercase tracking-wider text-emerald-400">Scam Encyclopedia Stack</span>
+            <h3 className="text-2xl font-display font-semibold text-white mt-1">Common Scam Categories & Golden Rules</h3>
           </div>
-          <span className="text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
+          <span className="text-xs font-mono tabular-nums text-slate-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
             🔄 Auto-Swapping 3D Stack (Hover to Pause)
           </span>
         </div>

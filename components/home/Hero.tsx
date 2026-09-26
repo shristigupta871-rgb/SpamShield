@@ -27,7 +27,7 @@ export default function Hero() {
             <div className="mb-2">
               <SplitText
                 text="Catch suspicious texts before they catch you."
-                className="text-4xl font-extrabold tracking-tight text-white md:text-6xl leading-tight"
+                className="font-display text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] text-white"
                 delay={45}
                 duration={0.7}
                 splitType="words"
@@ -39,7 +39,7 @@ export default function Hero() {
               />
             </div>
 
-            <p className="mt-6 max-w-xl text-lg text-slate-300 leading-relaxed">
+            <p className="mt-6 max-w-xl font-sans text-base text-slate-400 leading-relaxed">
               Scan messages, suspicious URLs, email headers, and screenshots for urgency, payment requests, and scam patterns in seconds.
             </p>
 

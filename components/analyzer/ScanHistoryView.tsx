@@ -66,73 +66,73 @@ export default function ScanHistoryView() {
   return (
     <div className="space-y-6 py-6">
       {/* Header & Metrics Summary */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 font-sans">
         <div>
-          <h3 className="text-2xl font-bold text-white">Recent Security Scans</h3>
+          <h3 className="text-2xl font-display font-bold text-white">Recent Security Scans</h3>
           <p className="text-xs text-slate-400">Persisted locally in SQLite threat database</p>
         </div>
         {scans.length > 0 && (
           <button
             onClick={handleClearAll}
-            className="rounded-xl border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold text-red-400 transition hover:bg-red-900/50"
+            className="rounded-xl border border-red-900/50 bg-red-950/30 px-4 py-2 font-sans text-xs font-semibold text-red-400 transition hover:bg-red-900/50"
           >
             Clear All History
           </button>
         )}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-4 font-sans">
         <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-4">
-          <p className="text-xs font-semibold uppercase text-slate-400">Total Scans</p>
-          <p className="mt-1 text-3xl font-extrabold text-white">{totalScans}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Scans</p>
+          <p className="mt-1 font-mono text-3xl font-extrabold text-white tabular-nums">{totalScans}</p>
         </div>
         <div className="rounded-2xl border border-red-900/50 bg-red-950/20 p-4">
-          <p className="text-xs font-semibold uppercase text-red-400">High Risk</p>
-          <p className="mt-1 text-3xl font-extrabold text-red-300">{highRiskCount}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-red-400">High Risk</p>
+          <p className="mt-1 font-mono text-3xl font-extrabold text-red-300 tabular-nums">{highRiskCount}</p>
         </div>
         <div className="rounded-2xl border border-amber-900/50 bg-amber-950/20 p-4">
-          <p className="text-xs font-semibold uppercase text-amber-400">Medium Risk</p>
-          <p className="mt-1 text-3xl font-extrabold text-amber-300">{mediumRiskCount}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-amber-400">Medium Risk</p>
+          <p className="mt-1 font-mono text-3xl font-extrabold text-amber-300 tabular-nums">{mediumRiskCount}</p>
         </div>
         <div className="rounded-2xl border border-emerald-900/50 bg-emerald-950/20 p-4">
-          <p className="text-xs font-semibold uppercase text-emerald-400">Low Risk / Safe</p>
-          <p className="mt-1 text-3xl font-extrabold text-emerald-300">{lowRiskCount}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">Low Risk / Safe</p>
+          <p className="mt-1 font-mono text-3xl font-extrabold text-emerald-300 tabular-nums">{lowRiskCount}</p>
         </div>
       </div>
 
       {/* Scan History Table/List */}
       {isLoading ? (
-        <div className="rounded-2xl border border-slate-800 bg-slate-950 p-8 text-center text-sm text-slate-400">
+        <div className="rounded-2xl border border-slate-800 bg-slate-950 p-8 text-center text-sm font-sans text-slate-400">
           Loading scan records...
         </div>
       ) : error ? (
-        <div className="rounded-2xl border border-red-900/40 bg-red-950/30 p-4 text-center text-sm text-red-300">
+        <div className="rounded-2xl border border-red-900/40 bg-red-950/30 p-4 text-center text-sm font-sans text-red-300">
           {error}
         </div>
       ) : scans.length === 0 ? (
-        <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-8 text-center text-sm text-slate-500">
+        <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-8 text-center text-sm font-sans text-slate-500">
           No past scans found. Run a security check to start logging threat history.
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-3 font-sans">
           {scans.map((item, idx) => (
             <div key={item.scan_id || idx} className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 font-sans transition hover:border-slate-700">
               <div className="flex items-center gap-3">
-                <span className="rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-bold text-slate-300 border border-slate-800 uppercase">
+                <span className="rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-sans font-semibold text-slate-300 border border-slate-800 uppercase tracking-wider">
                   {item.channel || 'message'}
                 </span>
                 <div>
                   <p className="text-sm font-semibold text-slate-200 line-clamp-1">
                     {item.hostname || item.subject || item.sender || item.signals?.[0] || 'Scanned Input'}
                   </p>
-                  <p className="text-xs text-slate-500">Category: {item.category || 'general'}</p>
+                  <p className="text-xs text-slate-500 font-sans">Category: {item.category || 'general'} {item.scan_id && <span className="font-mono text-[10px] text-slate-600 ml-2 tabular-nums">ID #{item.scan_id}</span>}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="text-xs text-slate-400">Threat Score</p>
-                  <p className="text-sm font-bold text-white">{item.score ?? 0} / 100</p>
+                  <p className="text-xs font-sans text-slate-400">Threat Score</p>
+                  <p className="text-sm font-mono font-bold text-white tabular-nums">{item.score ?? 0} / 100</p>
                 </div>
                 <RiskBadge risk={item.risk} />
                 <button
