@@ -3,6 +3,7 @@
 import type { AnalysisResult } from '@/lib/types';
 import RiskBadge from './RiskBadge';
 import CountUp from '@/components/ui/CountUp';
+import WarningSignals from './WarningSignals';
 
 export default function ResultCard({ result }: { result: AnalysisResult | null }) {
   if (!result) {
@@ -119,6 +120,13 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
             <p className="font-mono text-xs text-slate-300 leading-relaxed max-h-32 overflow-y-auto italic">
               "{result.extractedText}"
             </p>
+          </div>
+        )}
+
+        {/* Animated Warning Signals Stream */}
+        {signals.length > 0 && (
+          <div className="mb-6">
+            <WarningSignals signals={signals} />
           </div>
         )}
 

@@ -1,15 +1,28 @@
+'use client';
+
+import AnimatedList from '@/components/ui/AnimatedList';
+
 export default function WarningSignals({ signals }: { signals: string[] }) {
+  if (!signals || signals.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="rounded-2xl border border-slate-700 bg-slate-900/70 p-5">
-      <h3 className="mb-4 text-lg font-semibold text-white">Warning Signals</h3>
-      <ul className="space-y-3 text-sm text-slate-300">
-        {signals.map((signal) => (
-          <li key={signal} className="flex gap-3">
-            <span className="mt-1 h-2.5 w-2.5 rounded-full bg-red-400" />
-            <span>{signal}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-5 shadow-lg backdrop-blur-md">
+      <div className="mb-4 flex items-center justify-between">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-red-500 animate-ping" />
+          Detected Warning Signals ({signals.length})
+        </h3>
+        <span className="text-[10px] font-mono text-slate-500">Interactive Signal Stream</span>
+      </div>
+
+      <AnimatedList
+        items={signals}
+        showGradients={signals.length > 3}
+        enableArrowNavigation={true}
+        displayScrollbar={signals.length > 4}
+      />
     </div>
   );
 }
