@@ -5,6 +5,7 @@ import type { AnalysisResult } from '@/lib/types';
 import ResultCard from './ResultCard';
 import ScanHistoryView from './ScanHistoryView';
 import ScamKnowledgeHub from '../knowledge/ScamKnowledgeHub';
+import GlareHover from '@/components/ui/GlareHover';
 
 type ActiveTab = 'message' | 'camera' | 'upload' | 'url' | 'email' | 'history' | 'knowledge';
 
@@ -272,13 +273,21 @@ export default function MultiChannelAnalyzer() {
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Try Quick Scam Examples</p>
             <div className="flex flex-wrap gap-2">
               {DEMO_EXAMPLES.map((ex, idx) => (
-                <button
+                <GlareHover
                   key={idx}
-                  onClick={() => loadExample(ex.text)}
-                  className="rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-slate-300 transition hover:border-emerald-500 hover:text-white"
+                  width="auto"
+                  height="auto"
+                  borderRadius="0.75rem"
+                  glareColor="#10b981"
+                  glareOpacity={0.35}
                 >
-                  {ex.label}
-                </button>
+                  <button
+                    onClick={() => loadExample(ex.text)}
+                    className="rounded-xl border border-slate-800 bg-slate-900/90 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500 hover:text-white"
+                  >
+                    {ex.label}
+                  </button>
+                </GlareHover>
               ))}
             </div>
           </div>
