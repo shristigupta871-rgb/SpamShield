@@ -1,40 +1,86 @@
-const steps = [
+'use client';
+
+import Stepper, { Step } from '@/components/ui/Stepper';
+
+const stepsData = [
   {
-    title: 'Paste a message',
-    description: 'Drop in a suspicious SMS, email, or instant message for a quick scan.',
+    stepNumber: '01',
+    title: 'Submit Input',
+    subtitle: 'Paste Text, URL, Email or Screenshot',
+    description: 'Provide any suspicious SMS message, web link, email header, or upload a screenshot/image for automated Tesseract OCR processing.',
+    badge: 'Multi-Modal Capture',
+    badgeColor: 'bg-emerald-950 text-emerald-300 border-emerald-800'
   },
   {
-    title: 'Check the signals',
-    description: 'We look for urgency, payment requests, and risky link patterns.',
+    stepNumber: '02',
+    title: 'Multi-Signal Analysis',
+    subtitle: 'Deep Pattern & Typosquatting Check',
+    description: 'Our engine checks for high-risk urgency phrases, monetary requests, typosquatting domains, high-risk TLDs, and DKIM/SPF header mismatches.',
+    badge: 'Dual Heuristic Engine',
+    badgeColor: 'bg-blue-950 text-blue-300 border-blue-800'
   },
   {
-    title: 'Review the score',
-    description: 'A risk level tells you how likely the message is a scam.',
+    stepNumber: '03',
+    title: 'ML & Threat Intel Scoring',
+    subtitle: 'TF-IDF Classifier + Live Feed Check',
+    description: 'The trained TF-IDF Logistic Regression model predicts spam probability while querying cached global threat intelligence feeds (URLhaus / OpenPhish).',
+    badge: '60/40 Hybrid Weight',
+    badgeColor: 'bg-purple-950 text-purple-300 border-purple-800'
   },
   {
-    title: 'Take action',
-    description: 'Follow the recommended steps to stay protected and avoid falling for the trap.',
-  },
+    stepNumber: '04',
+    title: 'Review Risk & Take Action',
+    subtitle: 'Actionable Guidance & Audit History',
+    description: 'Get an unrounded 0-100 risk score, clear classification badges, evidence breakdowns, and safety tips logged persistently into your database.',
+    badge: 'Instant Threat Protection',
+    badgeColor: 'bg-amber-950 text-amber-300 border-amber-800'
+  }
 ];
 
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="mx-auto max-w-6xl px-6 py-20">
-      <div className="mb-10 text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">How it works</p>
-        <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">Simple checks. Safer decisions.</h2>
+      <div className="mb-12 text-center">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">Step-by-Step Workflow</p>
+        <h2 className="mt-3 text-3xl font-extrabold text-white md:text-4xl">Simple Checks. Safer Decisions.</h2>
+        <p className="mt-3 text-sm text-slate-400 max-w-xl mx-auto">
+          Explore how SpamShield AI evaluates messages, links, and screenshots in 4 simple automated steps.
+        </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {steps.map((step, index) => (
-          <div key={step.title} className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/15 text-sm font-bold text-emerald-300">
-              {index + 1}
-            </div>
-            <h3 className="mb-3 text-xl font-semibold text-white">{step.title}</h3>
-            <p className="text-slate-300">{step.description}</p>
-          </div>
-        ))}
+      <div className="w-full flex justify-center">
+        <Stepper
+          initialStep={1}
+          backButtonText="Previous Step"
+          nextButtonText="Next Step"
+          onFinalStepCompleted={() => {
+            const analyzerElem = document.getElementById('analyzer');
+            if (analyzerElem) {
+              analyzerElem.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          {stepsData.map((step, idx) => (
+            <Step key={idx}>
+              <div className="flex flex-col gap-4 text-left">
+                <div className="flex items-center justify-between">
+                  <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold border ${step.badgeColor}`}>
+                    {step.badge}
+                  </span>
+                  <span className="font-mono text-2xl font-black text-slate-600">
+                    {step.stepNumber}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">{step.title}</h3>
+                  <p className="text-xs font-medium text-emerald-400 mb-3">{step.subtitle}</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            </Step>
+          ))}
+        </Stepper>
       </div>
     </section>
   );
