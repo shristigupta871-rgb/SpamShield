@@ -4,6 +4,7 @@ import type { AnalysisResult } from '@/lib/types';
 import RiskBadge from './RiskBadge';
 import CountUp from '@/components/ui/CountUp';
 import WarningSignals from './WarningSignals';
+import SpotlightCard from '@/components/ui/SpotlightCard';
 
 export default function ResultCard({ result }: { result: AnalysisResult | null }) {
   if (!result) {
@@ -47,10 +48,20 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
   const emptyBars = 10 - filledBars;
   const riskBarString = '█'.repeat(filledBars) + '░'.repeat(emptyBars);
 
+  // Spotlight color based on risk level
+  const spotlightColor =
+    risk === 'HIGH'
+      ? 'rgba(239, 68, 68, 0.25)'
+      : risk === 'MEDIUM'
+        ? 'rgba(245, 158, 11, 0.25)'
+        : 'rgba(16, 185, 129, 0.25)';
+
   return (
     <div className="mt-8 space-y-6">
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-md">
-        
+      <SpotlightCard
+        className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-md"
+        spotlightColor={spotlightColor}
+      >
         {/* Header Title & Badges */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-6">
           <div>
@@ -251,7 +262,7 @@ export default function ResultCard({ result }: { result: AnalysisResult | null }
           </div>
         </div>
 
-      </div>
+      </SpotlightCard>
     </div>
   );
 }
